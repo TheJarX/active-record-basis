@@ -51,3 +51,11 @@ pokemon.update(price: 3999)
 
 rpg_games = Game.where(genre: 'Role-playing (RPG)')
 rpg_games.update_all(price: 2999)
+
+death_star = Game.find(3)
+death_star.destroy
+
+Game.destroy_by(genre: 'Adventure')
+
+# *THANOS SNAPS HIS FINGERS*
+Game.destroy_all # / 2
