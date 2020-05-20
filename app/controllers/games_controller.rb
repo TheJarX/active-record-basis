@@ -18,6 +18,15 @@ class GamesController < ApplicationController
     end
   end
 
+  def update
+    @game = Game.find(params[:id])
+    if @game.update_attributes(game_params)
+      render json: @game
+    else
+      render_error(@game.errors, :unprocessable_entity)
+    end
+  end
+
   def destroy
     @game = Game.find(params[:id])
     @game.destroy

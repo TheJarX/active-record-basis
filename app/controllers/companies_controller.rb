@@ -17,6 +17,21 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def update
+    @company = Company.find(params[:id])
+    if @company.update_attributes(company_params)
+      render json: @company
+    else
+      render_error(@company.errors, :unprocessable_entity)
+    end
+  end
+
+  def destroy
+    @company = Company.find(params[:id])
+    @company.destroy
+    head :no_content
+  end
+
   private
   def company_params
     params.require(:company).permit(:name, :descriptiom, :start_date, :country)
