@@ -22,7 +22,7 @@ class CompaniesController < ApplicationController
     if @company.update_attributes(company_params)
       render json: @company
     else
-      render_error(@company.errors, :unprocessable_entity)
+      render json: @company.errors, status: :unprocessable_entity
     end
   end
 
