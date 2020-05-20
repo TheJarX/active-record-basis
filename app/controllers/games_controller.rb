@@ -18,6 +18,12 @@ class GamesController < ApplicationController
     end
   end
 
+  def destroy
+    @game = Game.find(params[:id])
+    @game.destroy
+    head :no_content
+  end
+
   private
   def game_params
     params.require(:game).permit(:name, :genre, :price, :release_date, :company_id)
